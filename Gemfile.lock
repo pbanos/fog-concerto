@@ -1,0 +1,36 @@
+PATH
+  remote: .
+  specs:
+    fog-concerto (0.0.0)
+      fog-core (~> 1.27)
+      fog-json (~> 1.0)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    builder (3.2.2)
+    excon (0.45.1)
+    fog-core (1.29.0)
+      builder
+      excon (~> 0.38)
+      formatador (~> 0.2)
+      mime-types
+      net-scp (~> 1.1)
+      net-ssh (>= 2.1.3)
+    fog-json (1.0.0)
+      multi_json (~> 1.0)
+    formatador (0.2.5)
+    mime-types (2.4.3)
+    multi_json (1.11.0)
+    net-scp (1.2.1)
+      net-ssh (>= 2.6.5)
+    net-ssh (2.9.2)
+    rake (10.4.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  bundler (~> 1.6)
+  fog-concerto!
+  rake (~> 10.0)
