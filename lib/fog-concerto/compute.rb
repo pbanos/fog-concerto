@@ -27,16 +27,24 @@ module Fog
 			collection :server_plans
 			model :cloud_provider
 			collection :cloud_providers
+			model :location
+			collection :locations
 
 			request_path 'fog-concerto/requests/compute'
 			request :list_workspaces
 			request :get_workspace
+			request :create_workspace
+			request :update_workspace
 			request :delete_workspace
 			request :list_workspace_servers
 
 			request :get_server
 			request :create_server
 			request :update_server
+			request :boot_server
+			request :shutdown_server
+			request :reboot_server
+			request :override_server
 			request :delete_server
 
 			request :list_firewall_profiles
@@ -65,8 +73,11 @@ module Fog
 			request :list_template_servers
 			
 			request :list_generic_images
-			request :list_server_plans
 			request :list_cloud_providers
+			request :list_server_plans
+			request :get_server_plan
+			request :list_locations
+			
 
 			class Real
 
@@ -102,7 +113,7 @@ module Fog
 					headers =  {}
 					headers['Content-Type'] = 'application/json' if method != :get and body
 					request = {method: method, headers: headers, path: request_path, expects: expects}
-					if method == :get
+					if method != :get
 						request[:body] = body.to_json if body
 					else
 						request[:query] = query if query

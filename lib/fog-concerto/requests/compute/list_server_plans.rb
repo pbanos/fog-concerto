@@ -9,7 +9,7 @@ module Fog
 
       class Real
         def list_server_plans(cloud_provider_id)
-          request(path: "cloud/cloud_provider/#{cloud_provider_id}/server_plans", expects: [200])
+          request(path: "cloud/cloud_providers/#{cloud_provider_id}/server_plans", expects: [200])
         end
       end
     end

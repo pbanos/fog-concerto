@@ -13,8 +13,7 @@ module Fog
 				end
 
 				def get(id)
-					data = service.get_cloud_provider(id).body
-					new(data)
+					all.detect{|cloud_provider| cloud_provider.id == id}
 				end
 			end
 		end

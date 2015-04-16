@@ -66,7 +66,8 @@ module Fog
 
 				def destroy
 					requires :id
-					service.delete_server(id).body
+					data = service.delete_server(id).body
+					merge_attributes(data)
 				end
 
 				def save
@@ -78,6 +79,34 @@ module Fog
 						data = service.create_server(name, fqdn, workspace_id, template_id, server_plan_id).body
 						merge_attributes(data)
 					end
+				end
+
+				def start
+					requires :id
+					data = service.boot_server(id).body
+					merge_attributes(data)
+				end
+
+				def stop
+					requires :id
+					data = service.shutdown_server(id).body
+					merge_attributes(data)
+				end
+
+				def reboot
+					requires :id
+					data = service.reboot_server(id).body
+					merge_attributes(data)
+				end
+
+				def override
+					requires :id
+					data = service.override_server(id).body
+					merge_attributes(data)
+				end
+
+				def ready?
+					state == 'operational'
 				end
 			end
 		end

@@ -2,14 +2,14 @@ module Fog
   module Concerto
     class Compute
       class Mock
-        def delete_server(id)
+        def override_server(id)
           Fog::Mock.not_implemented
         end
       end
 
       class Real
-        def delete_server(id)
-          request(method: :delete, path: "cloud/servers/#{id}", expects: [200])
+        def override_server(id)
+          request(method: :put, path: "cloud/servers/#{id}/override", expects: [200])
         end
       end
     end

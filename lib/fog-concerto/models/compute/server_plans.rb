@@ -10,13 +10,13 @@ module Fog
 
 				def all
 					requires :cloud_provider_id
-					data = service.list_server_plans.body
+					data = service.list_server_plans(cloud_provider_id).body
 					load(data)
 				end
 
 				def get(id)
-					requires :cloud_provider_id
-					all.detect{|server_plan| server_plan.id == id}
+					data =  service.get_server_plan(id).body
+					new(data)
 				end
 			end
 		end
